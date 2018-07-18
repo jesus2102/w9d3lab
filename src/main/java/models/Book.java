@@ -14,8 +14,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String title, String author, boolean onLoan, Borrower borrower) {
-        this.id = id;
+    public Book(String title, String author, boolean onLoan, Borrower borrower) {
         this.title = title;
         this.author = author;
         this.onLoan = onLoan;
@@ -61,8 +60,8 @@ public class Book {
         this.onLoan = onLoan;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "borrower_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "borrower_id" , nullable= true)
     public Borrower getBorrower() {
         return borrower;
     }
