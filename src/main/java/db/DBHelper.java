@@ -44,6 +44,24 @@ public class DBHelper {
         }
     }
 
+    public static <T> void deleteAll(Class classType) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Criteria cr = session.createCriteria(classType);
+            List<T> results = cr.list();
+            for (T result : results) {
+                session.delete(result);
+            }
+            transaction.commit();
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     //TODO: DELETE METHOD
     public static void delete(Object object){
         session = HibernateUtil.getSessionFactory().openSession();
