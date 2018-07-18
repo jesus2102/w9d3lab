@@ -23,4 +23,15 @@ public class BookTest {
         book.setTitle("Catcher in the rye");
         assertEquals("Catcher in the rye", book.getTitle());
     }
+
+    @Test
+    public void hasAuthor() {
+        assertEquals("Tomas Turbado", book.getAuthor());
+    }
+
+    @Test
+    public void canSetAuthor(){
+        book.setAuthor("Pepa pig");
+        assertEquals("Pepa pig", book.getAuthor());
+    }
 }
