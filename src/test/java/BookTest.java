@@ -34,4 +34,16 @@ public class BookTest {
         book.setAuthor("Pepa pig");
         assertEquals("Pepa pig", book.getAuthor());
     }
+
+    @Test
+    public void hasOnLoanStatus(){
+        assertEquals(false, book.isOnLoan());
+    }
+
+    @Test
+    public void canSetOnLoanStatus(){
+        book.setOnLoan(true);
+        assertEquals(true, book.isOnLoan());
+    }
+
 }
