@@ -1,4 +1,5 @@
 import models.Book;
+import models.Borrower;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,10 +8,12 @@ import static org.junit.Assert.assertEquals;
 public class BookTest {
 
     Book book;
+    Borrower borrower;
 
     @Before
     public void before(){
         book = new Book("Kama-sutra", "Tomas Turbado", false, null);
+        borrower = new Borrower("Shaun");
     }
 
     @Test
@@ -46,4 +49,14 @@ public class BookTest {
         assertEquals(true, book.isOnLoan());
     }
 
+    @Test
+    public void hasBorrower(){
+        assertEquals(null, book.getBorrower());
+    }
+
+    @Test
+    public void canSetBorrower(){
+        book.setBorrower(borrower);
+        assertEquals("Shaun", book.getBorrower().getName());
+    }
 }
